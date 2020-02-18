@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data loader</title>
+</head>
+
+<body>
+
+    <form action="get" method="post">
+        {% csrf_token %}
+        Enter api_key: <input type="text" name="api_key"><br>
+        Enter group_id: <input type="text" name="group_id"><br>
+        <input type="submit">
+    </form>
+
+    <div>
+        {% for message in messages %}
+        <h3> {{message}} </h3>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>

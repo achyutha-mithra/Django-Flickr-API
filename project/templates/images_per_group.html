@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images in {{gid}}</title>
+</head>
+
+<body>
+    <div class="pagination" style="text-align: center;">
+
+        {% if images.has_previous %}
+        <a href="http://{{path}}/api/v1/photos/?group={{gid}}/?page=1">
+            first&nbsp </a>
+        <a href="http://{{path}}/api/v1/photos/?group={{gid}}/?page={{ images.previous_page_number }}">
+            previous &nbsp</a>
+        {% endif %}
+        {% for num in images.paginator.page_range %}
+        {% if images.number == num %}
+        <strong>{{ num }}</strong>
+        {% elif num >  images.number|add:'-3' and num < images.number|add:'3' %}
+        {{ num }}
+        {% endif %}
+        {% endfor %}
+        {% if images.has_next %}
+        <a href="http://{{path}}/api/v1/photos/?group={{gid}}/?page={{ images.next_page_number }}"> &nbsp next
+        </a>
+        <a href="http://{{path}}/api/v1/photos/?group={{gid}}/?page={{ images.paginator.num_pages }}">
+            &nbsp last </a>
+        {% endif %}
+
+    </div>
+    <h2 style="text-align: center;">Group Id {{gid}}</h2>
+    <table style="border-spacing: 0px; margin: 0 auto; width: 100%">
+        <tbody>
+            <tr>{% for image in images %}
+                <td style="margin-top: 5px;"></td>
+                <p style="text-align: left; letter-spacing:0px; font-family:Noto Sans, Helvetica; font-weight:700;
+                    font-size:16px; padding: 15px 0;">
+                    {{ image.title }}</p>
+                <img src="http://{{path}}/media/{{image.img}}" style="width: 500px;" />
+            </tr>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination" style="text-align: center;">
+
+        {% if images.has_previous %}
+        <a href="http://{{path}}/api/v1/photos/?group={{gid}}/?page=1">
+            first&nbsp </a>
+        <a href="http://{{path}}/api/v1/photos/?group={{gid}}/?page={{ images.previous_page_number }}">
+            previous &nbsp</a>
+        {% endif %}
+        {% for num in images.paginator.page_range %}
+        {% if images.number == num %}
+        <strong>{{ num }}</strong>
+        {% elif num >  images.number|add:'-3' and num < images.number|add:'3' %}
+        {{ num }}
+        {% endif %}
+        {% endfor %}
+        {% if images.has_next %}
+        <a href="http://{{path}}/api/v1/photos/?group={{gid}}/?page={{ images.next_page_number }}"> &nbsp next
+        </a>
+        <a href="http://{{path}}/api/v1/photos/?group={{gid}}/?page={{ images.paginator.num_pages }}">
+            &nbsp last </a>
+        {% endif %}
+
+    </div>
+</body>
+
+</html>

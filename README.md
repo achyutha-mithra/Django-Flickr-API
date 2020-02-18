@@ -1,7 +1,5 @@
 # Django-Flickr-API
 
-Has three apps:
-
 assignment project has two applications: 
 	i) data_load
 	ii) api
